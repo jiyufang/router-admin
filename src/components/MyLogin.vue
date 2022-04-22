@@ -11,17 +11,17 @@
         <!-- 登录名称 -->
         <div class="form-group form-inline">
           <label for="username">登录名称</label>
-          <input type="text" id="username" class="form-control ml-2" placeholder="请输入登录名称" autocomplete="off" />
+          <input type="text" id="username" class="form-control ml-2" placeholder="请输入登录名称" autocomplete="off" v-model.trim="username" />
         </div>
         <!-- 登陆密码 -->
         <div class="form-group form-inline">
           <label for="password">登录密码</label>
-          <input type="password" id="password" class="form-control ml-2" placeholder="请输入登录密码" autocomplete="off" />
+          <input type="password" id="password" class="form-control ml-2" placeholder="请输入登录密码" autocomplete="off" v-model.trim="password" />
         </div>
         <!-- 登录和重置密码 -->
         <div class="form-group form-inline d-flex justify-content-end">
-          <button type="button" class="btn btn-secondary mr-2">重置</button>
-          <button type="button" class="btn btn-primary">登录</button>
+          <button type="button" class="btn btn-secondary mr-2" @click="reset">重置</button>
+          <button type="button" class="btn btn-primary" @click="login">登录</button>
         </div>
       </div>
     </div>
@@ -29,7 +29,33 @@
 </template>
 
 <script>
-export default {}
+export default {
+  name: 'MyLogin',
+  data() {
+    return {
+      username: '',
+      password: ''
+    }
+  },
+  methods: {
+    reset() {
+      this.username = ''
+      this.password = ''
+    },
+    login() {
+      if (this.username === 'admin' && this.password === '888888') {
+        //登录成功
+        // 存储 token
+        localStorage.setItem('token', 'Bearer xxxx')
+        // 跳转到后台页面
+        this.$router.push('/home')
+      } else {
+        // 登录失败
+        localStorage.removeItem('token')
+      }
+    }
+  }
+}
 </script>
 
 <style lang="less" scoped>
@@ -43,7 +69,7 @@ export default {}
     border-radius: 3px;
     position: absolute;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     top: 50%;
     .avatar-box {
       width: 100px;
@@ -77,27 +103,26 @@ export default {}
         }
       }
       .justify-content-end {
-      position: absolute;
-      bottom: -40px;
-      right: 30px;
-      .btn {
-        width: 50px;
-        height: 30px;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-      .btn-secondary {
-        background-color: #6d757c;
-        margin-right: 5px;
-      }
-      .btn-primary {
-        background-color: #0077fe;
+        position: absolute;
+        bottom: -40px;
+        right: 30px;
+        .btn {
+          width: 50px;
+          height: 30px;
+          color: #fff;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+        .btn-secondary {
+          background-color: #6d757c;
+          margin-right: 5px;
+        }
+        .btn-primary {
+          background-color: #0077fe;
+        }
       }
     }
-    }
-    
   }
 }
 </style>

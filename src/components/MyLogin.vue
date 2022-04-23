@@ -64,7 +64,7 @@ export default {
   height: 700px;
   .login-box {
     width: 400px;
-    height: 250px;
+    height: 300px;
     background-color: #fff;
     border-radius: 3px;
     position: absolute;
@@ -89,8 +89,8 @@ export default {
     }
     .form-login {
       position: absolute;
-      top: 75px;
-      left: 20px;
+      top: 45px;
+      left: 50px;
       .form-group {
         margin-top: 10px;
         label {
@@ -98,29 +98,26 @@ export default {
         }
         .form-control {
           width: 250px;
-          height: 20px;
+          height: 35px;
           outline: none;
         }
       }
       .justify-content-end {
         position: absolute;
-        bottom: -40px;
+        // bottom: -40px;
         right: 30px;
         .btn {
-          width: 50px;
-          height: 30px;
+          width: 60px;
+          height: 35px;
           color: #fff;
           border: none;
           border-radius: 5px;
           cursor: pointer;
         }
         .btn-secondary {
-          background-color: #6d757c;
           margin-right: 5px;
         }
-        .btn-primary {
-          background-color: #0077fe;
-        }
+       
       }
     }
   }
